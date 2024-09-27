@@ -1,0 +1,8 @@
+<button 
+    [ngClass]="{
+        'is-command': isCommand(),
+        'is-double-size': isDoubleSize()
+    }"
+[class.is-command]="isCommand()">
+    <ng-content/>
+</button>
