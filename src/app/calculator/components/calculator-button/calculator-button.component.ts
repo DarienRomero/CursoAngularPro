@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostBinding, input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, input, OnInit, output, Output, signal, viewChild, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'calculator-button',
@@ -11,12 +11,21 @@ import { ChangeDetectionStrategy, Component, HostBinding, input, OnInit, ViewEnc
   styleUrl: './calculator-button.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    class: "w-1/4 border-r border-b border-indigo-400"
+    class: "border-r border-b border-indigo-400",
+    '[class.w-2/4]' : 'isDoubleSize()',
+    '[class.w-1/4]' : '!isDoubleSize()'
   },
   //Quiero que los estilos sean globales
   //encapsulation: ViewEncapsulation.None
 })
-export class CalculatorButtonComponent{
+export class CalculatorButtonComponent {
+
+  public isPressed = signal(false);
+
+  public contentValue = viewChild<ElementRef<HTMLButtonElement>>('button');
+  
+  public onClick = output<string>();
+  
   public isCommand = input(false , {
     //Se ejecuta antes de su asignación
     transform: (value: boolean | string) =>
@@ -33,8 +42,25 @@ export class CalculatorButtonComponent{
     return this.isCommand()
   } */
 
-    @HostBinding('class.w-2/4') get commandStyle(){
+  /* @HostBinding('class.w-2/4') get commandStyle(){
     return this.isDoubleSize()
+  } */
+
+  handleClick(){
+    if(this.contentValue()?.nativeElement.innerText){
+     const value = this.contentValue()?.nativeElement.innerText!;
+     this.onClick.emit(value.trim())
+    }
+  }
+
+  public keyboardPressedStyle(key: string){
+    if(!this.contentValue()) return;
+    const value = this.contentValue()?.nativeElement.innerText;
+    if(value !== key) return;
+    this.isPressed.set(true);
+    setTimeout(() => {
+      this.isPressed.set(false);
+    }, 100);
   }
 
 
