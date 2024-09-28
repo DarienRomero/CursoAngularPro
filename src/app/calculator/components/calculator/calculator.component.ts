@@ -43,6 +43,7 @@ export class CalculatorComponent {
 
   handleClick(key: string){
     console.log('key', key)
+    this.calculatorService.constructorNumber(key)
   }
 
   handleKeyboardEvent(event: KeyboardEvent){
