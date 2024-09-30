@@ -50,7 +50,7 @@ export class CalculatorService {
         this.resultText.set("0")
         return
       }
-      this.resultText.update((oldValue) => value.slice(0, -1))
+      this.resultText.update((oldValue) => oldValue.slice(0, -1))
       return
     }
 
