@@ -47,10 +47,13 @@ export class CalculatorButtonComponent {
   } */
 
   handleClick(){
-    if(this.contentValue()?.nativeElement.innerText){
-     const value = this.contentValue()?.nativeElement.innerText!;
-     this.onClick.emit(value.trim())
+    console.log("Handle click")
+    if(!this.contentValue()?.nativeElement){
+      return
     }
+    const value = this.contentValue()?.nativeElement.innerText!;
+    console.log()
+    this.onClick.emit(value.trim())
   }
 
   public keyboardPressedStyle(key: string){
