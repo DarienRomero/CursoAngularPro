@@ -27,7 +27,6 @@ export class CalculatorService {
       return
     }
     if(value === "="){
-      console.log("Calcular resultado")
       this.calculateResult()
       return
     }
@@ -119,8 +118,6 @@ export class CalculatorService {
     const number1 = parseFloat(this.subResultText());
     const number2 = parseFloat(this.resultText());
 
-    console.log('number1', number1)
-    console.log('number2', number2)
     let result = 0;
 
     switch(this.lastOperator()){
