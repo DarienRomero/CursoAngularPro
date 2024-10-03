@@ -130,7 +130,13 @@ export class CalculatorService {
       case "*":
         result = number1 * number2
         break;
+      case "X":
+        result = number1 * number2
+        break;
       case "/":
+        result = number1 / number2
+        break;
+      case "÷":
         result = number1 / number2
         break;
     }
