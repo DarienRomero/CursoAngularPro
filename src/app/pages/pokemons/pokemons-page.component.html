@@ -3,7 +3,11 @@
     Página actual
 </h2>
 <hr class="my-2">
-<pokemon-list/>
+@if(!isLoading()){
+    <pokemon-list/>
+}@else{
+    <pokemons-list-skeleton/>
+}
 <!-- TODO: pokemon-list-skeleton -->
  <!-- TODO: Buttons Cargar siguientes y anteriores -->
 
