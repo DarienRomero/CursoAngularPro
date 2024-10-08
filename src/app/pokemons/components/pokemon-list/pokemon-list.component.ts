@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { PokemonCardComponent } from "../pokemon-card/pokemon-card.component";
+import { SimplePokemon } from '../../interfaces/simple-pokemon.interface';
 
 @Component({
   selector: 'pokemon-list',
@@ -9,5 +10,5 @@ import { PokemonCardComponent } from "../pokemon-card/pokemon-card.component";
   styleUrl: './pokemon-list.component.css'
 })
 export class PokemonListComponent {
-
+  public pokemons = input.required<SimplePokemon[]>();
 }
