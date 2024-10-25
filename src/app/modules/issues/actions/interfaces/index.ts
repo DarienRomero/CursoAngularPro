@@ -1,0 +1,1 @@
+export {GithubLabel} from "./github-label.interface"
