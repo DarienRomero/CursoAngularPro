@@ -4,7 +4,7 @@ import { GithubLabel } from "./interfaces/github-label.interface";
 export const getLabels = async () : Promise<GithubLabel[]> => {
     try{
         await sleep(1500);
-        const resp = await fetch(`https://api.github.com/repos/angular/angular/issues`)
+        const resp = await fetch(`https://api.github.com/repos/angular/angular/labels`)
         if(!resp.ok) throw "Cant load labels"
 
         const labels = await resp.json() as GithubLabel[];

@@ -22,6 +22,11 @@
          <!-- Labels -->
           <div>
             <h2>Labels</h2>
+            @if(labelsQuery.isLoading()){
+                <p>Estamos cargando</p>
+            }@else {
+                <issues-label-selector [labels]="labelsQuery.data()?? []"></issues-label-selector>
+            }
             <!-- TODO: Spinner -->
              <!-- TODO: Label selector -->
           </div>
