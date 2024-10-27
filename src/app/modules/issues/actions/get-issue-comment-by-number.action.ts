@@ -1,29 +1,27 @@
-import { sleep } from "@helpers/index";
 import { environment } from "src/environments/environment.development";
 import { GithubIssue } from "./interfaces";
 
 const BASE_URL = environment.baseUrl;
 const GITHUB_TOKEN = environment.githubToken;
 
-export const getIssues = async () : Promise<GithubIssue[]> => {
+export const getIssueCommentByNumber = async (issueNumber: string) : Promise<GithubIssue[]> => {
     try{
-        await sleep(1500);
         const resp = await fetch(
-            `${environment.baseUrl}/issues`,
+            `${BASE_URL}/issues/${issueNumber}/comments`,
             {
                 headers: {
                     // Authorization: `Bearer ${GITHUB_TOKEN}`
                 }
             }
         )
-        if(!resp.ok) throw "Cant load issues"
+        if(!resp.ok) throw "Cant load issue"
 
-        const labels = await resp.json() as GithubIssue[];
+        const comments = await resp.json() as GithubIssue[];
 
-        return labels;
+        return comments;
 
 
     }catch(error){
-        throw "Cant load labels"
+        throw "Cant load issue"
     }
 }

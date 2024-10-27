@@ -5,13 +5,15 @@ import {toSignal} from "@angular/core/rxjs-interop";
 import { map, tap } from 'rxjs';
 import { IssueService } from '../../services/issue.service';
 import { IssueCommentComponent } from "../../components/issue-comment/issue-comment.component";
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-issue-page',
   standalone: true,
   imports: [
     CommonModule,
-    IssueCommentComponent
+    IssueCommentComponent,
+    MarkdownModule
 ],
   templateUrl: './issue-page.component.html',
 })
@@ -27,6 +29,7 @@ export default class IssuePageComponent {
   )
 
   issueQuery = this.issueService.issueQuery;
+  issueCommentsQuery = this.issueService.issueCommentsQuery;
 
 
 

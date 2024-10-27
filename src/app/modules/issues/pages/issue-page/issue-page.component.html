@@ -6,3 +6,20 @@
 }@else {
     <issue-comment [issue] = "issueQuery.data()!"></issue-comment>
 }
+
+@if(issueCommentsQuery.isLoading()){
+    <p>Cargando comentarios</p>
+}@else {
+    @for(issueComment of issueCommentsQuery.data(); track issueComment.id){
+        <issue-comment [issue]="issueComment"></issue-comment>    
+    }@empty {
+        @if(issueCommentsQuery.isLoading()){
+            <p>Cargando comentarios</p>
+        }@else {
+            <p>No hay comentarios que mostrar</p>
+        }
+    }
+}
+
+<!-- Comments -->
+<!-- IssueCommentsQuery -->

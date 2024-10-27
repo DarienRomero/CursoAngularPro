@@ -10,7 +10,7 @@ export const getIssueByNumber = async (issueNumber: string) : Promise<GithubIssu
             `${BASE_URL}/issues/${issueNumber}`,
             {
                 headers: {
-                    Authorization: `Bearer ${GITHUB_TOKEN}`
+                    // Authorization: `Bearer ${GITHUB_TOKEN}`
                 }
             }
         )

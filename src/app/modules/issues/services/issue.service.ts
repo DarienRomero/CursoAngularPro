@@ -1,6 +1,6 @@
 import { Injectable, signal } from "@angular/core";
 import { injectQuery } from "@tanstack/angular-query-experimental";
-import { getIssueByNumber } from "../actions";
+import { getIssueByNumber, getIssueCommentByNumber } from "../actions";
 
 @Injectable({
     providedIn: 'root'
@@ -18,4 +18,10 @@ export class IssueService {
     setIssueNumber(issueNumber: string){
         this.issueNumber.set(issueNumber)
     }
+
+    public issueCommentsQuery = injectQuery(()=>({
+        queryKey: ["issue", "comments", this.issueNumber()],
+        queryFn: () => getIssueCommentByNumber(this.issueNumber()!),
+        enabled: this.issueNumber() !== null
+    }));
 }

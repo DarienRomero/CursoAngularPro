@@ -12,7 +12,7 @@ export const getLabels = async () : Promise<GithubLabel[]> => {
             `${environment.baseUrl}/labels`,
             {
                 headers: {
-                    Authorization: `Bearer ${GITHUB_TOKEN}`
+                    // Authorization: `Bearer ${GITHUB_TOKEN}`
                 }
             }
         )
