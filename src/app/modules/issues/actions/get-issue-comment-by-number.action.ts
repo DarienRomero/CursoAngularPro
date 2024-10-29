@@ -22,6 +22,6 @@ export const getIssueCommentByNumber = async (issueNumber: string) : Promise<Git
 
 
     }catch(error){
-        throw "Cant load issue"
+        throw "Cant load issue comments"
     }
 }

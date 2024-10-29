@@ -22,6 +22,6 @@ export const getIssueByNumber = async (issueNumber: string) : Promise<GithubIssu
 
 
     }catch(error){
-        throw "Cant load issue"
+        throw `Cant load issue ${issueNumber}`
     }
 }
