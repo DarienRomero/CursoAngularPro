@@ -1,0 +1,8 @@
+<h1 class="text-3xl font-bold underline">Hola Mundo</h1>
+
+<lib-drl-side-menu
+    [isAuthenticated]="isAuthenticated()"
+    [titleColor]="TitleColor.blue"
+    (onSignIn)="isAuthenticated.set(true)"
+    (onSignOut)="isAuthenticated.set(false)"
+></lib-drl-side-menu>
