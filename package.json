@@ -11,7 +11,7 @@
     "drl-side-menu:build": "ng build drl-side-menu",
     "drl-side-menu:lint": "ng lint drl-side-menu",
     "drl-side-menu:test": "ng test drl-side-menu --no-watch --no-progress --browsers=ChromeHeadless",
-    "drl-side-menu:publish": "npm run drl-side-menu:test && npm run drl-side-menu-build && npm publish dist/drl-side-menu"
+    "drl-side-menu:publish": "npm run drl-side-menu:test && npm run drl-side-menu:build && npm publish dist/drl-side-menu/"
   },
   "private": true,
   "dependencies": {
